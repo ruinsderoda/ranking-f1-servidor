@@ -7,6 +7,8 @@ const activeSeriesTitle = document.querySelector("#activeSeriesTitle");
 const activeSeriesInfo = document.querySelector("#activeSeriesInfo");
 const rankingNameHeader = document.querySelector("#rankingNameHeader");
 const rankingDetailHeader = document.querySelector("#rankingDetailHeader");
+const rankingMetricOneHeader = document.querySelector("#rankingMetricOneHeader");
+const rankingMetricTwoHeader = document.querySelector("#rankingMetricTwoHeader");
 const totalDrivers = document.querySelector("#totalDrivers");
 const nextRaceDate = document.querySelector("#nextRaceDate");
 const raceList = document.querySelector("#raceList");
@@ -39,25 +41,35 @@ function renderRanking(seriesName) {
 
   activeSeries = seriesName;
   const drivers = data.rankings[seriesName];
+  const hasPilotStats = drivers.some((driver) => driver.dnf || driver.nc !== undefined);
   activeSeriesTitle.textContent = seriesName;
   activeSeriesInfo.textContent =
     rankingMode === "drivers"
       ? `${drivers.length} pilotos classificados nesta divisao`
       : `${getConstructors(drivers).length} construtores classificados nesta divisao`;
 
-  if (rankingNameHeader && rankingDetailHeader) {
+  if (rankingNameHeader && rankingDetailHeader && rankingMetricOneHeader && rankingMetricTwoHeader) {
     rankingNameHeader.textContent = rankingMode === "drivers" ? "Piloto" : "Construtor";
-    rankingDetailHeader.textContent = rankingMode === "drivers" ? "Equipe" : "Pilotos";
+    rankingDetailHeader.textContent =
+      rankingMode === "drivers" ? (hasPilotStats ? "Pais" : "Equipe") : "Pilotos";
+    rankingMetricOneHeader.textContent =
+      rankingMode === "drivers" ? (hasPilotStats ? "NC" : "Vitorias") : "NC";
+    rankingMetricTwoHeader.textContent =
+      rankingMode === "drivers" ? (hasPilotStats ? "DNF" : "Podios") : "DNF";
   }
 
   const rows =
     rankingMode === "drivers"
       ? drivers.map((driver) => ({
+          position: driver.position,
           name: driver.driver,
-          detail: driver.team,
+          detail: driver.country ? `${driver.country} ${driver.flag ?? ""}` : driver.team,
           points: driver.points,
-          wins: driver.wins,
-          podiums: driver.podiums
+          metricOne:
+            driver.nc !== undefined
+              ? `${driver.movement ?? ""} NC`.trim()
+              : driver.wins,
+          metricTwo: driver.dnf ?? driver.podiums
         }))
       : getConstructors(drivers);
 
@@ -65,12 +77,12 @@ function renderRanking(seriesName) {
     .map(
       (entry, index) => `
         <tr>
-          <td><span class="position">${index + 1}</span></td>
+          <td><span class="position">${entry.position ?? index + 1}</span></td>
           <td>${entry.name}</td>
           <td>${entry.detail}</td>
           <td><strong>${entry.points}</strong></td>
-          <td>${entry.wins}</td>
-          <td>${entry.podiums}</td>
+          <td>${entry.metricOne}</td>
+          <td>${entry.metricTwo}</td>
         </tr>
       `
     )
@@ -86,27 +98,38 @@ function getConstructors(drivers) {
   const constructors = new Map();
 
   drivers.forEach((driver) => {
-    const current = constructors.get(driver.team) ?? {
-      name: driver.team,
+    const constructorName = driver.constructor ?? driver.team ?? "Sem construtor";
+    const current = constructors.get(constructorName) ?? {
+      name: constructorName,
       detail: [],
       points: 0,
-      wins: 0,
-      podiums: 0
+      nc: 0,
+      dnfValues: []
     };
 
     current.detail.push(driver.driver);
     current.points += driver.points;
-    current.wins += driver.wins;
-    current.podiums += driver.podiums;
-    constructors.set(driver.team, current);
+    current.nc += driver.nc ?? driver.wins ?? 0;
+    if (driver.dnf) {
+      current.dnfValues.push(Number(driver.dnf.replace("%", "").replace(",", ".")));
+    }
+    constructors.set(constructorName, current);
   });
 
   return [...constructors.values()]
     .map((constructor) => ({
-      ...constructor,
-      detail: constructor.detail.join(", ")
+      name: constructor.name,
+      detail: constructor.detail.join(", "),
+      points: constructor.points,
+      metricOne: `${constructor.nc} NC`,
+      metricTwo: constructor.dnfValues.length
+        ? `${(
+            constructor.dnfValues.reduce((total, value) => total + value, 0) /
+            constructor.dnfValues.length
+          ).toFixed(1).replace(".", ",")}%`
+        : "-"
     }))
-    .sort((a, b) => b.points - a.points || b.wins - a.wins || b.podiums - a.podiums);
+    .sort((a, b) => b.points - a.points);
 }
 
 function renderRankingModes() {

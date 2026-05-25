@@ -1,10 +1,26 @@
 window.championshipData = {
   rankings: {
     "Serie A": [
-      { driver: "Lunardi", team: "Red Falcon", points: 148, wins: 5, podiums: 8 },
-      { driver: "Rafa", team: "Apex Racing", points: 132, wins: 3, podiums: 7 },
-      { driver: "Bruno", team: "Night Shift", points: 119, wins: 2, podiums: 6 },
-      { driver: "Miguel", team: "Delta GP", points: 101, wins: 1, podiums: 4 }
+      { position: "01", driver: "@PRTCarvalho", country: "BRA", flag: "🇧🇷", team: "Sem construtor", points: 77, movement: "◀️ = 0", nc: 0, dnf: "8,3%" },
+      { position: "02", driver: "@back", country: "BRA", flag: "🇧🇷", team: "Sem construtor", points: 25, movement: "◀️ = 0", nc: 0, dnf: "10,0%" },
+      { position: "03", driver: "@lipe0204", country: "BRA", flag: "🇧🇷", team: "Sem construtor", points: 24, movement: "◀️ = 0", nc: 0, dnf: "0,0%" },
+      { position: "04", driver: "@RuanPbl", country: "BRA", flag: "🇧🇷", team: "Sem construtor", points: 23, movement: "⏫ + 11", nc: 11, dnf: "0,0%" },
+      { position: "05", driver: "@willaxbox", country: "BRA", flag: "🇧🇷", team: "Sem construtor", points: 22, movement: "🔼 + 4", nc: 4, dnf: "0,0%" },
+      { position: "06", driver: "@LuizVitex", country: "BRA", flag: "🇧🇷", team: "Sem construtor", points: 20, movement: "🔽 - 2", nc: -2, dnf: "37,5%" },
+      { position: "07", driver: "@andrxss", country: "ESP", flag: "🇪🇸", team: "Sem construtor", points: 18, movement: "🔽 - 2", nc: -2, dnf: "18,2%" },
+      { position: "08", driver: "@Glauco [BR]", country: "BRA", flag: "🇧🇷", team: "Sem construtor", points: 18, movement: "🔽 - 3", nc: -3, dnf: "9,1%" },
+      { position: "08", driver: "@ARM BUNFL", country: "BRA", flag: "🇧🇷", team: "Sem construtor", points: 18, movement: "🔽 - 1", nc: -1, dnf: "50,0%" },
+      { position: "10", driver: "@Vegenakki", country: "FIN", flag: "🇫🇮", team: "Sem construtor", points: 18, movement: "⏫ + 12", nc: 12, dnf: "0,0%" },
+      { position: "11", driver: "@CoyoteLoko", country: "???", flag: "🇧🇷", team: "Sem construtor", points: 16, movement: "🔼 + 1", nc: 1, dnf: "0,0%" },
+      { position: "12", driver: "@Rezende_rz", country: "BRA", flag: "🇧🇷", team: "Sem construtor", points: 16, movement: "🔽 - 4", nc: -4, dnf: "10,0%" },
+      { position: "13", driver: "@ViT1N", country: "BRA", flag: "🇧🇷", team: "Sem construtor", points: 14, movement: "🔽 - 1", nc: -1, dnf: "12,5%" },
+      { position: "14", driver: "@I_need_a_DOCTOR", country: "CAN", flag: "🇨🇦", team: "Sem construtor", points: 12, movement: "🔽 - 4", nc: -4, dnf: "16,7%" },
+      { position: "14", driver: "@UrsoSenna", country: "BRA", flag: "🇧🇷", team: "Sem construtor", points: 12, movement: "🔽 - 4", nc: -4, dnf: "25,0%" },
+      { position: "16", driver: "@MARCIO-SCHUCHTER", country: "BRA", flag: "🇧🇷", team: "Sem construtor", points: 12, movement: "⏫ + 6", nc: 6, dnf: "0,0%" },
+      { position: "17", driver: "@IsmuYa", country: "BRA", flag: "🇧🇷", team: "Sem construtor", points: 10, movement: "🔼 + 4", nc: 4, dnf: "50,0%" },
+      { position: "18", driver: "@Moitipo", country: "BRA", flag: "🇧🇷", team: "Sem construtor", points: 9, movement: "🔽 - 4", nc: -4, dnf: "0,0%" },
+      { position: "19", driver: "@Omg_iz-ghOst", country: "BRA", flag: "🇧🇷", team: "Sem construtor", points: 8, movement: "🔽 - 4", nc: -4, dnf: "20,0%" },
+      { position: "20", driver: "@deri", country: "BRA", flag: "🇧🇷", team: "Sem construtor", points: 4, movement: "🔽 - 3", nc: -3, dnf: "33,3%" }
     ],
     "Serie B": [
       { driver: "Caio", team: "Apex Racing", points: 127, wins: 4, podiums: 6 },
