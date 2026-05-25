@@ -8,6 +8,8 @@
   --line: #2a2f3d;
   --red: #e10600;
   --red-dark: #990400;
+  --blue: #1463ff;
+  --blue-dark: #0b3fb7;
   --gold: #f6c65b;
   --radius: 8px;
   --shadow: 0 20px 70px rgba(0, 0, 0, 0.35);
@@ -130,8 +132,8 @@ a {
 .championship-switch {
   display: inline-flex;
   flex: 0 0 auto;
-  gap: 8px;
-  padding: 6px;
+  gap: 10px;
+  padding: 8px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: rgba(17, 19, 26, 0.9);
@@ -139,19 +141,26 @@ a {
 }
 
 .championship-switch button {
-  min-width: 58px;
+  min-width: 76px;
+  min-height: 54px;
   border: 1px solid transparent;
   border-radius: var(--radius);
   background: transparent;
   color: var(--muted);
   cursor: pointer;
-  font: 700 1rem Rajdhani, sans-serif;
-  padding: 10px 18px;
+  font: 700 1.15rem Rajdhani, sans-serif;
+  padding: 12px 24px;
 }
 
-.championship-switch button.active {
+.championship-switch button[data-championship="f1"].active {
   border-color: var(--red);
   background: var(--red);
+  color: #fff;
+}
+
+.championship-switch button[data-championship="f2"].active {
+  border-color: var(--blue);
+  background: var(--blue);
   color: #fff;
 }
 
