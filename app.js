@@ -12,7 +12,26 @@ const liveKpis = document.querySelector("#liveKpis");
 const liveList = document.querySelector("#liveList");
 const rulesGrid = document.querySelector("#rulesGrid");
 
+function markActivePage() {
+  const page = document.body.dataset.page;
+  if (!page) {
+    return;
+  }
+
+  document.querySelectorAll("[data-nav]").forEach((link) => {
+    const isActive = link.dataset.nav === page;
+    link.classList.toggle("active", isActive);
+    if (isActive) {
+      link.setAttribute("aria-current", "page");
+    }
+  });
+}
+
 function renderRanking(seriesName) {
+  if (!rankingBody || !activeSeriesTitle || !activeSeriesInfo) {
+    return;
+  }
+
   const drivers = data.rankings[seriesName];
   activeSeriesTitle.textContent = seriesName;
   activeSeriesInfo.textContent = `${drivers.length} pilotos classificados nesta divisao`;
@@ -39,6 +58,10 @@ function renderRanking(seriesName) {
 }
 
 function renderTabs() {
+  if (!seriesTabs) {
+    return;
+  }
+
   seriesTabs.innerHTML = Object.keys(data.rankings)
     .map(
       (seriesName) => `
@@ -58,7 +81,14 @@ function renderTabs() {
 }
 
 function renderRaces() {
-  nextRaceDate.textContent = data.races[0]?.date ?? "--";
+  if (nextRaceDate) {
+    nextRaceDate.textContent = data.races[0]?.date ?? "--";
+  }
+
+  if (!raceList) {
+    return;
+  }
+
   raceList.innerHTML = data.races
     .map(
       (race) => `
@@ -79,6 +109,10 @@ function renderRaces() {
 }
 
 function renderNews() {
+  if (!newsGrid) {
+    return;
+  }
+
   newsGrid.innerHTML = data.news
     .map(
       (item) => `
@@ -93,33 +127,41 @@ function renderNews() {
 }
 
 function renderLives() {
-  liveKpis.innerHTML = data.lives.totals
-    .map(
-      (item) => `
-        <div>
-          <strong>${item.value}</strong>
-          <span>${item.label}</span>
-        </div>
-      `
-    )
-    .join("");
-
-  liveList.innerHTML = data.lives.broadcasts
-    .map(
-      (broadcast) => `
-        <article>
+  if (liveKpis) {
+    liveKpis.innerHTML = data.lives.totals
+      .map(
+        (item) => `
           <div>
-            <h3>${broadcast.title}</h3>
-            <p>${broadcast.channel} · ${broadcast.views}</p>
+            <strong>${item.value}</strong>
+            <span>${item.label}</span>
           </div>
-          <span>${broadcast.status}</span>
-        </article>
-      `
-    )
-    .join("");
+        `
+      )
+      .join("");
+  }
+
+  if (liveList) {
+    liveList.innerHTML = data.lives.broadcasts
+      .map(
+        (broadcast) => `
+          <article>
+            <div>
+              <h3>${broadcast.title}</h3>
+              <p>${broadcast.channel} &middot; ${broadcast.views}</p>
+            </div>
+            <span>${broadcast.status}</span>
+          </article>
+        `
+      )
+      .join("");
+  }
 }
 
 function renderRules() {
+  if (!rulesGrid) {
+    return;
+  }
+
   rulesGrid.innerHTML = data.rules
     .map(
       (rule) => `
@@ -133,12 +175,17 @@ function renderRules() {
 }
 
 function renderSummary() {
+  if (!totalDrivers) {
+    return;
+  }
+
   totalDrivers.textContent = Object.values(data.rankings).reduce(
     (count, drivers) => count + drivers.length,
     0
   );
 }
 
+markActivePage();
 renderTabs();
 renderRanking("Serie A");
 renderRaces();

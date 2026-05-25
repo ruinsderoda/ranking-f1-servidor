@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lives | Ranking F1 do Servidor</title>
+    <meta name="description" content="Dados das lives e transmissoes do servidor de F1." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="lives">
+    <header class="page-hero">
+      <nav class="topbar" aria-label="Navegacao principal">
+        <a class="brand" href="index.html" aria-label="Ranking F1 inicio"><span class="brand-mark">F1</span><span>Ranking do Servidor</span></a>
+        <div class="nav-links">
+          <a href="rankings.html" data-nav="rankings">Rankings</a>
+          <a href="corridas.html" data-nav="corridas">Corridas</a>
+          <a href="noticias.html" data-nav="noticias">Noticias</a>
+          <a href="lives.html" data-nav="lives">Lives</a>
+          <a href="regras.html" data-nav="regras">Regras</a>
+        </div>
+      </nav>
+      <div class="page-title">
+        <p class="eyebrow">Transmissoes</p>
+        <h1>Lives</h1>
+        <p>Resumo das transmissoes feitas pela comunidade, com numeros e replays.</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="live-panel">
+          <div class="live-kpis" id="liveKpis"></div>
+          <div class="live-list" id="liveList"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Ranking F1 do Servidor. Atualize os dados em <code>data.js</code>.</p>
+      <a href="index.html">Voltar para inicio</a>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

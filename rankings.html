@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rankings | Ranking F1 do Servidor</title>
+    <meta name="description" content="Tabelas de ranking da Serie A ate Serie G do servidor de F1." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="rankings">
+    <header class="page-hero">
+      <nav class="topbar" aria-label="Navegacao principal">
+        <a class="brand" href="index.html" aria-label="Ranking F1 inicio"><span class="brand-mark">F1</span><span>Ranking do Servidor</span></a>
+        <div class="nav-links">
+          <a href="rankings.html" data-nav="rankings">Rankings</a>
+          <a href="corridas.html" data-nav="corridas">Corridas</a>
+          <a href="noticias.html" data-nav="noticias">Noticias</a>
+          <a href="lives.html" data-nav="lives">Lives</a>
+          <a href="regras.html" data-nav="regras">Regras</a>
+        </div>
+      </nav>
+      <div class="page-title">
+        <p class="eyebrow">Classificacao</p>
+        <h1>Rankings</h1>
+        <p>Tabelas da Serie A ate Serie G, com pontos, vitorias e podios.</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="series-tabs" id="seriesTabs" role="tablist" aria-label="Series"></div>
+        <div class="ranking-shell">
+          <div class="ranking-header">
+            <h3 id="activeSeriesTitle">Serie A</h3>
+            <p id="activeSeriesInfo">Carregando classificacao...</p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Pos</th>
+                  <th>Piloto</th>
+                  <th>Equipe</th>
+                  <th>Pontos</th>
+                  <th>Vitorias</th>
+                  <th>Podios</th>
+                </tr>
+              </thead>
+              <tbody id="rankingBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Ranking F1 do Servidor. Atualize os dados em <code>data.js</code>.</p>
+      <a href="index.html">Voltar para inicio</a>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
