@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=3" />
+    <link rel="stylesheet" href="styles.css?v=4" />
   </head>
   <body data-page="rankings">
     <header class="page-hero">
@@ -31,10 +31,12 @@
 
     <main>
       <section class="section">
-        <div class="series-tabs" id="seriesTabs" role="tablist" aria-label="Series"></div>
-        <div class="ranking-mode" aria-label="Tipo de ranking">
-          <button class="active" type="button" data-ranking-mode="drivers">Pilotos</button>
-          <button type="button" data-ranking-mode="constructors">Construtores</button>
+        <div class="ranking-toolbar">
+          <div class="series-tabs" id="seriesTabs" role="tablist" aria-label="Series"></div>
+          <div class="ranking-mode" aria-label="Tipo de ranking">
+            <button class="active" type="button" data-ranking-mode="drivers">Pilotos</button>
+            <button type="button" data-ranking-mode="constructors">Construtores</button>
+          </div>
         </div>
         <div class="ranking-shell">
           <div class="ranking-header">
@@ -65,7 +67,7 @@
       <a href="index.html">Voltar para inicio</a>
     </footer>
 
-    <script src="data.js?v=3"></script>
-    <script src="app.js?v=3"></script>
+    <script src="data.js?v=4"></script>
+    <script src="app.js?v=4"></script>
   </body>
 </html>

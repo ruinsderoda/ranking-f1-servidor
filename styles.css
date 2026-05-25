@@ -241,11 +241,20 @@ h1 {
   line-height: 1.6;
 }
 
-.series-tabs {
+.ranking-toolbar {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   gap: 10px;
   margin-bottom: 18px;
+}
+
+.series-tabs {
+  display: flex;
+  flex: 1 1 620px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .series-tabs button,
@@ -267,9 +276,9 @@ h1 {
 }
 
 .ranking-mode {
-  display: inline-flex;
+  display: flex;
+  flex: 0 0 auto;
   gap: 8px;
-  margin-bottom: 18px;
   padding: 6px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -522,6 +531,18 @@ footer a {
   .nav-links {
     margin-top: 18px;
     flex-wrap: wrap;
+  }
+
+  .ranking-toolbar {
+    display: block;
+  }
+
+  .series-tabs {
+    margin-bottom: 12px;
+  }
+
+  .ranking-mode {
+    display: inline-flex;
   }
 
   .stats-strip,
